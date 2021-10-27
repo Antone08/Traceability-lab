@@ -8,7 +8,7 @@ let rollbar = new Rollbar({
     catptureUnhandledRejections: true
 });
 
-rollbar.log("Hello world");
+// rollbar.log("Hello world");
 
 const app= express()
 app.use(express.json())
@@ -20,6 +20,7 @@ app.get('/', (req, res) => {
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/styles.css'))
+    rollbar.info('styling successfully connected')
 })
 
 app.use(rollbar.errorHandler())
